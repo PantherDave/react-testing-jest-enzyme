@@ -4,8 +4,6 @@ import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { findByTestAttr, checkPT } from "../test/testUtils";
 import Congrats from "./Congrats";
 
-Enzyme.configure({ adapter: new EnzymeAdapter() });
-
 const defaultProps = { success: false };
 
 /**
