@@ -21,6 +21,7 @@ const Input = ({ secretWord }) => {
           className="btn btn-primary mb-2"
           onClick={(e) => {
             e.preventDefault();
+            setCurrentGuess("");
           }}
         >
           Submit
