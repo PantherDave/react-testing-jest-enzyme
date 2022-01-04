@@ -1,5 +1,7 @@
 import { mount } from "enzyme";
-import { findByTestAttr } from "../test/testUtils";
+import { Provider } from "react-redux";
+
+import { findByTestAttr, storeFactory } from "../test/testUtils";
 import App from "./App";
 
 // activate global mockt to make sure getSecretWord doesn't make network call
@@ -11,8 +13,13 @@ import { getSecretWord as mockGetSecretWord } from "./actions";
  * @returns {ShallowWrapper}
  */
 const setup = () => {
+  const store = storeFactory();
   // use mount, because useEffect not called on `shallow`
-  return mount(<App />);
+  return mount(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 };
 
 test("renders without error", () => {
