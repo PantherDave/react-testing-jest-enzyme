@@ -1,7 +1,8 @@
 import moxios from "moxios";
 import { getSecretWord } from "./";
+import { storeFactory } from "../../test/testUtils";
 
-describe.skip("getSecretWord", () => {
+describe("getSecretWord", () => {
   beforeEach(() => {
     moxios.install();
   });
@@ -9,6 +10,7 @@ describe.skip("getSecretWord", () => {
     moxios.uninstall();
   });
   test("secretWord is returned", () => {
+    let store = storeFactory();
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -18,8 +20,9 @@ describe.skip("getSecretWord", () => {
     });
 
     // update to test app in Redux / context sections
-    return getSecretWord().then((secretWord) => {
-      expect(secretWord).toBe("train");
+    return store.dispatch(getSecretWord()).then(() => {
+      const secretWord = store.getState().secretWord;
+      expect(secretWord).toBe("party");
     });
   });
 });
