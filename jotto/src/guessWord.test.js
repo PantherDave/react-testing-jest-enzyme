@@ -39,7 +39,7 @@ const setup = (initialState = {}) => {
 //   test.todo("guessedWords table does not get another row");
 // });
 
-describe.skip("no words guessed", () => {
+describe("no words guessed", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup({
@@ -54,7 +54,7 @@ describe.skip("no words guessed", () => {
   });
 });
 
-describe.skip("some words guessed", () => {
+describe("some words guessed", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup({
@@ -69,7 +69,7 @@ describe.skip("some words guessed", () => {
   });
 });
 
-describe.skip("guess secret word", () => {
+describe("guess secret word", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup({
@@ -81,6 +81,7 @@ describe.skip("guess secret word", () => {
     // add value to input box
     const inputBox = findByTestAttr(wrapper, "input-box");
     const mockEvent = { target: { value: "party" } };
+    inputBox.simulate("change", mockEvent);
 
     // simulate clock on submit button
     const submitButton = findByTestAttr(wrapper, "submit-button");

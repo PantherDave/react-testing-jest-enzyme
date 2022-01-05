@@ -64,12 +64,6 @@ describe("render", () => {
   });
 });
 
-test("Input renders without error", () => {
-  const wrapper = setup({ success: false });
-  const inputComponent = findByTestAttr(wrapper, "component-input");
-  expect(inputComponent.length).toBe(1);
-});
-
 test("does not throw warning with expected props", () => {
   checkPT(Input, { secretWord: "party" });
 });
